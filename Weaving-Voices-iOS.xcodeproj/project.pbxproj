@@ -22,6 +22,7 @@
 		1D825387191F959500B33359 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D825366191F959500B33359 /* UIKit.framework */; };
 		1D82538F191F959500B33359 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1D82538D191F959500B33359 /* InfoPlist.strings */; };
 		1D825391191F959500B33359 /* Weaving_Voices_iOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D825390191F959500B33359 /* Weaving_Voices_iOSTests.m */; };
+		1D82539B191F9CA600B33359 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D82539A191F9CA600B33359 /* AVFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		1D82538C191F959500B33359 /* Weaving-Voices-iOSTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Weaving-Voices-iOSTests-Info.plist"; sourceTree = "<group>"; };
 		1D82538E191F959500B33359 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1D825390191F959500B33359 /* Weaving_Voices_iOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Weaving_Voices_iOSTests.m; sourceTree = "<group>"; };
+		1D82539A191F9CA600B33359 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D82539B191F9CA600B33359 /* AVFoundation.framework in Frameworks */,
 				1D825365191F959500B33359 /* CoreGraphics.framework in Frameworks */,
 				1D825367191F959500B33359 /* UIKit.framework in Frameworks */,
 				1D825363191F959500B33359 /* Foundation.framework in Frameworks */,
@@ -103,6 +106,7 @@
 		1D825361191F959500B33359 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1D82539A191F9CA600B33359 /* AVFoundation.framework */,
 				1D825362191F959500B33359 /* Foundation.framework */,
 				1D825364191F959500B33359 /* CoreGraphics.framework */,
 				1D825366191F959500B33359 /* UIKit.framework */,
