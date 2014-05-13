@@ -30,11 +30,12 @@ NSString *pathToAudioFile;
     [playButton setEnabled:NO];
     [uploadButton setEnabled:NO];
     
-    UIDevice *device = [UIDevice currentDevice];
+    //UIDevice *device = [UIDevice currentDevice];
     
-    NSString  *currentDeviceId = [[device identifierForVendor]UUIDString];
-    NSString  *timestamp = [NSString stringWithFormat:@"%f",[[NSDate new] timeIntervalSince1970] * 1000];
-    NSString *fileName = [NSString stringWithFormat:@"%@%@%@", timestamp, currentDeviceId, @".aac"];
+    //NSString  *currentDeviceId = [[device identifierForVendor]UUIDString];
+    //NSString  *timestamp = [NSString stringWithFormat:@"%f",[[NSDate new] timeIntervalSince1970] * 1000];
+    //NSString *fileName = [NSString stringWithFormat:@"%@%@%@", timestamp, currentDeviceId, @".aac"];
+    NSString *fileName = [NSString stringWithFormat:@"recording.aiff"];
     // Set the audio file
     NSArray *pathComponents = [NSArray arrayWithObjects:
                                [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject],
@@ -52,7 +53,9 @@ NSString *pathToAudioFile;
     // Define the recorder setting
     NSMutableDictionary *recordSetting = [[NSMutableDictionary alloc] init];
     
-    [recordSetting setValue:[NSNumber numberWithInt:kAudioFormatMPEG4AAC] forKey:AVFormatIDKey];
+    [recordSetting setValue:[NSNumber numberWithInt:kAudioFormatLinearPCM] forKey:AVFormatIDKey];
+    [recordSetting setValue:[NSNumber numberWithInt:16] forKey:AVLinearPCMBitDepthKey];
+    //[recordSetting setValue:[NSNumber numberWithBool:YES] forKey:AVLinearPCMIsBigEndianKey];
     [recordSetting setValue:[NSNumber numberWithFloat:44100.0] forKey:AVSampleRateKey];
     [recordSetting setValue:[NSNumber numberWithInt: 2] forKey:AVNumberOfChannelsKey];
     
@@ -132,7 +135,8 @@ NSString *pathToAudioFile;
         [request addValue:contentType forHTTPHeaderField: @"Content-Type"];
         NSMutableData *postbody = [NSMutableData data];
         [postbody appendData:[[NSString stringWithFormat:@"\r\n--%@\r\n",boundary] dataUsingEncoding:NSUTF8StringEncoding]];
-        [postbody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data;name=\"uploaded_file\"; filename=\"%@\"\r\n", pathToAudioFile]dataUsingEncoding:NSUTF8StringEncoding]];
+        NSString  *timestamp = [NSString stringWithFormat:@"%f",[[NSDate new] timeIntervalSince1970] * 1000];
+        [postbody appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data;name=\"uploaded_file\"; filename=\"%@/%@-%@.aiff\"\r\n", pathToAudioFile, _emailTextField.text, timestamp]dataUsingEncoding:NSUTF8StringEncoding]];
         //"uploadedfile" should be substituted for whatever variable the backend script expects the file variable to be
         [postbody appendData:[@"Content-Type: application/octet-streamrnrn" dataUsingEncoding:NSUTF8StringEncoding]];
         [postbody appendData:data];
